@@ -1,0 +1,13 @@
+<div *ngFor="let post of redditPosts?.data?.children">
+    <div *ngIf="post.data.is_video;else elseBlock">
+        <h1>{{post.data.title}}</h1>
+        <video src="{{post.data.media?.reddit_video?.fallback_url}}" controls autoplay class="thumbnail"></video>
+        <a href="https://www.reddit.com{{post.data.permalink}}">Link to post</a>
+    </div>
+    <ng-template #elseBlock>
+        <h1>{{post.data.title}}</h1>
+        <img src="{{post.data.url}}" class="thumbnail">
+        <a href="https://www.reddit.com{{post.data.permalink}}">Link to post</a>
+    </ng-template>
+    <p></p>
+</div>
